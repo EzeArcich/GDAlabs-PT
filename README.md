@@ -16,6 +16,7 @@ Los seeders en este orden:
 php artisan db:seed --class=UserSeeder
 php artisan db:seed --class=RegionSeeder
 php artisan db:seed --class=CommuneSeeder
+Agregar esta línea al archivo .env para el correcto funcionamiento de los logs: "LOG_OUTPUT_ENABLED=true"
 
 ## Uso
 
