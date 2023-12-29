@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\AuthToken;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -22,6 +23,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+
         $user = User::where('email', $request->email)->first();
     
         if (!$user) {
@@ -29,7 +31,7 @@ class AuthController extends Controller
             return response()->json(['success' => false, 'message' => 'Usuario no encontrado'], 404);
         }
     
-        if ($request->password == $user->password) {
+        if (Hash::check($request->password, $user->password)) {
             $token = $this->generateToken($user);
             Log::info("login: Generado token para usuario con email: " . $user->email);
             return response()->json(['token' => $token, 'success' => true]);
