@@ -13,16 +13,6 @@ class CustomerController extends Controller
     public function register(Request $request)
     {
         try {
-            $request->validate([
-                'dni' => 'required|string|min:8',
-                'region_id' => 'required|exists:regions,id_reg',
-                'commune_id' => 'required|exists:communes,id_com',
-                'email' => 'required|email|unique:customers|max:255',
-                'name' => 'required|string|max:255',
-                'last_name' => 'required|string|max:255',
-                'address' => 'required|string|max:255',
-            ]);
-
             $regionId = $request->region_id;
             $communeId = $request->commune_id;
 
@@ -91,9 +81,6 @@ class CustomerController extends Controller
     public function deleteRecord(Request $request)
     {
         try {
-            $request->validate([
-                'dni' => 'required|int|min:8',
-            ]);
 
             $customer = Customer::where('dni', $request->dni)
                 ->whereIn('status', ['A', 'I'])

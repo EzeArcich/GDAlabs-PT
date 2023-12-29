@@ -27,9 +27,9 @@ Route::post('/login', [AuthController::class, 'login']);
 
 // Rutas protegidas
 Route::middleware('auth.token')->group(function () {
-    Route::post('/customer/register', [CustomerController::class, 'register']);
+    Route::post('/customer/register', [CustomerController::class, 'register'])->middleware('validate.customer.registration');
     Route::get('/customer/get_record', [CustomerController::class, 'getRecord']);
-    Route::delete('/customer/delete_record', [CustomerController::class, 'deleteRecord']);
+    Route::delete('/customer/delete_record', [CustomerController::class, 'deleteRecord'])->middleware('validate.delete_record');
 });
 
 
