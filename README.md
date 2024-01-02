@@ -7,6 +7,11 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Comentarios
+
+Desarrollado con Laravel 8 - PHP v 7*
+
+
 ## Instalación
 
 Clonar el repositorio
@@ -17,8 +22,6 @@ php artisan db:seed --class=UserSeeder
 php artisan db:seed --class=RegionSeeder
 php artisan db:seed --class=CommuneSeeder
 Agregar esta línea al archivo .env para el correcto funcionamiento de los logs: "LOG_OUTPUT_ENABLED=true"
-
-## Uso
 
 El desarrollo y pruebas del proyecto se llevaron a cabo con Postman.
 
